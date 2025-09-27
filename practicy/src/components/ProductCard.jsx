@@ -19,7 +19,7 @@ function ProductCard({ name, price, image, id }) {
     }
 
     dispatch({
-      type: 'ADD_ITEM',
+      type: 'additem',
       payload: { id, name, price, image, quantity }
     });
 
@@ -38,7 +38,7 @@ function ProductCard({ name, price, image, id }) {
       <div className="quantity-controls">
         <button className="quantity-btn" onClick={decrease}>−</button>
         <span className="quantity">{quantity}</span>
-        <button className="quantity-btn" onClick={increase}>+</button>
+          <button className="quantity-btn" onClick={increase}>+</button>
       </div>
 
       <button className="add-to-cart-btn" onClick={handleAddToCart}>
