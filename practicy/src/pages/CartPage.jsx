@@ -5,7 +5,7 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleRemove = (id) => {
-    dispatch({ type: 'REMOVE_ITEM', payload: id });
+    dispatch({ type: 'removeitem', payload: id });
   };
 
   if (cart.length === 0) {

@@ -1,5 +1,24 @@
 {
   "dependencies": {
+    "pg": "^8.16.3",
     "react-router-dom": "^6.22.0"
-  }
+  },
+  "name": "practicy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sargsyan001-s/PrYP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sargsyan001-s/PrYP/issues"
+  },
+  "homepage": "https://github.com/Sargsyan001-s/PrYP#readme",
+  "description": ""
 }

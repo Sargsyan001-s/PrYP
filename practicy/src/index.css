@@ -65,23 +65,6 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   margin-right: auto;
 }
 
-.site-logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--primary);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.site-logo span {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .main-nav {
   display: flex;
   gap: 1.25rem;
@@ -126,7 +109,6 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   width: 70%;
 }
 
-/* Активная ссылка — подсвечивается градиентом */
 .main-nav a.active,
 .main-nav a.router-link-active {
   color: white !important;
@@ -134,8 +116,6 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   box-shadow: var(--shadow-hover);
   position: relative;
 }
-
-
 
 .header-actions {
   display: flex;
@@ -249,6 +229,9 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* 🔑 Ключевое изменение: фиксированная минимальная высота для выравнивания */
+  min-height: 430px;
+  justify-content: space-between;
 }
 
 .product-card:hover {
@@ -284,6 +267,67 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   margin-bottom: 1.25rem;
 }
 
+.product-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0.6rem 0;
+  line-height: 1.5;
+  min-height: 48px; /* Гарантирует одинаковую высоту описания */
+}
+
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.product-meta span::before {
+  content: "• ";
+  color: var(--primary);
+}
+
+.ingredients-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  border: 1px solid var(--border-light);
+  color: var(--primary-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.3;
+  min-height: 32px;
+  box-sizing: border-box;
+}
+
+.ingredients-toggle:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.ingredients-panel {
+  background: rgba(248, 192, 208, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.ingredients-panel h4 {
+  margin: 0 0 8px 0;
+  color: var(--primary-dark);
+  font-size: 1rem;
+}
+
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -292,10 +336,11 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   background: var(--card-bg);
   border: 1px solid var(--border-light);
   border-radius: 24px;
-  padding: 0.5rem;
+  padding: 0 8px;
   width: 100%;
   margin-bottom: 1.25rem;
   font-family: 'Poppins', sans-serif;
+  min-height: 36px;
 }
 
 .quantity-btn {
@@ -305,7 +350,7 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   border-radius: 50%;
   background: transparent;
   color: var(--primary);
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -342,11 +387,21 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   transition: var(--transition);
   box-shadow: var(--shadow);
   font-family: 'Poppins', sans-serif;
+  /* 🔑 Ключевое: фиксированная высота кнопки */
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .add-to-cart-btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+}
+
+.dark-theme .add-to-cart-btn {
+  background: linear-gradient(135deg, #e56aa5, #d44c8a);
 }
 
 .cart-page {
@@ -424,11 +479,19 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   font-family: 'Playfair Display', serif;
 }
 
+.cart-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 2rem 0;
+}
+
 .login-page {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 80vh;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 60px;
 }
 
 .login-container {
@@ -454,7 +517,12 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   gap: 1.25rem;
 }
 
-.login-form input {
+.form-group {
+  text-align: left;
+}
+
+.form-group input {
+  width: 100%;
   padding: 0.85rem 1rem;
   font-size: 1rem;
   border: 2px solid var(--border-light);
@@ -466,9 +534,42 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   transition: var(--transition);
 }
 
-.login-form input:focus {
+.form-group input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(248, 192, 208, 0.3);
+}
+
+.form-group input.input-error {
+  border-color: #ff4d4d;
+  background-color: #fff2f2;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 6px;
+  display: block;
+}
+
+.switch-form {
+  margin: 16px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+}
+
+.link-btn:hover {
+  color: var(--primary);
 }
 
 .guest-btn {
@@ -483,6 +584,11 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
   font-weight: 600;
   transition: var(--transition);
   font-family: 'Poppins', sans-serif;
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .guest-btn:hover {
@@ -554,12 +660,4 @@ h1, h2, h3, h4, .site-logo, .product-name, .product-price, .cart-item-info h4 {
 .remove-btn:hover {
   background: #ffcdd2;
   transform: scale(1.1);
-}
-
-
-.cart-empty {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  margin: 2rem 0;
 }

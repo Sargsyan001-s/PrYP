@@ -5,14 +5,14 @@ const CartContext = createContext();
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within CartProvider');
+    throw new Error('useCart должен использоваться в рамках CartProvider');
   }
   return context;
 };
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_ITEM': {
+    case 'additem': {
       const { id, name, price, image, quantity = 1 } = action.payload;
       const existingItem = state.find(item => item.id === id);
 
@@ -26,10 +26,10 @@ const cartReducer = (state, action) => {
       return [...state, { id, name, price, image, quantity }];
     }
 
-    case 'REMOVE_ITEM':
+    case 'removeitem':
       return state.filter(item => item.id !== action.payload);
 
-    case 'UPDATE_QUANTITY': {
+    case 'updatequantity': {
       const { id, quantity } = action.payload;
       if (quantity < 1) {
         return state.filter(item => item.id !== id);
@@ -38,6 +38,9 @@ const cartReducer = (state, action) => {
         item.id === id ? { ...item, quantity } : item
       );
     }
+
+    case 'clearcart':
+      return [];
 
     default:
       return state;
