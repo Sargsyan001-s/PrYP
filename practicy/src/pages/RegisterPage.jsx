@@ -1,4 +1,3 @@
-// src/pages/RegisterPage.jsx
 import { useAuth } from '../context/AuthContext.jsx';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +7,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
-  const { register, users } = useAuth(); // ← Теперь users определён
+  const { register, users } = useAuth(); 
   const navigate = useNavigate();
 
   const validate = () => {
