@@ -1,4 +1,3 @@
-// src/context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ 
       user, 
-      users: loginData, // ← ИСПРАВЛЕНО: передаём loginData как users
+      users: loginData, 
       login, 
       logout, 
       register 
